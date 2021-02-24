@@ -60,7 +60,6 @@ class LoginFrame(tkinter.Frame):
         menu.add_cascade(label="Edit", menu=editmenu)
 
 
-
         menubutton = Menubutton(self, text = "Language", relief = FLAT)  
         # deklarasi foto
         self.photos = PhotoImage(file = "pick.png") 
