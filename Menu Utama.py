@@ -9,8 +9,8 @@ class LoginFrame(tkinter.Frame):
         tkinter.Frame.__init__(self, master)
         self.grid()
         self.utama()
-        self.grid_rowconfigure(1, weight=1)
-        self.grid_columnconfigure(1, weight=1)
+        # self.grid_rowconfigure(1, weight=1)
+        # self.grid_columnconfigure(1, weight=1)
 
     def utama(self) :
 
@@ -59,20 +59,73 @@ class LoginFrame(tkinter.Frame):
         editmenu.add_command(label="Paste")
         menu.add_cascade(label="Edit", menu=editmenu)
 
-
         menubutton = Menubutton(self, text = "Language", relief = FLAT)  
-        # deklarasi foto
         self.photos = PhotoImage(file = "pick.png") 
-        # mengatur ukuran button
-        self.photoimages = self.photos.subsample(100, 100) 
+        self.photoimages = self.photos.subsample(60, 60) 
         menubutton['image'] = self.photoimages
-        menubutton.grid()  
+        menubutton.grid(row=0, column=0, sticky=W)  
         menubutton.menu = Menu(menubutton)  
         menubutton["menu"]=menubutton.menu  
         menubutton.menu.add_checkbutton(label = "Pick Tool", variable=IntVar())  
-        menubutton.menu.add_checkbutton(label = "Move Tool", variable = IntVar())  
+        menubutton.menu.add_checkbutton(label = "Move Tool", variable = IntVar())
 
-        # self.config(menu = menu)
+        
+
+        Pemahaman = tkinter.Label(self, text="Tingkat Pemahaman :")
+        Pemahaman['bg'] = '#252525'
+        Pemahaman['fg'] = '#ffffff'
+        Pemahaman['font'] = 'Helvetica 12 bold'
+        Pemahaman.grid(row=0, column=1, sticky=W)
+
+        scale = Scale(self, 
+            variable=IntVar,
+            orient='horizontal',
+            activebackground='blue',
+            bg='#252525',
+            cursor='plus',
+            font='Calibri',
+            fg='#fff',
+            from_=1,
+            to=10,
+            highlightbackground='red',
+            # label='range nilai',
+            length=200,
+            relief='raised',
+            sliderlength=10)
+        scale.grid(row=0, column=2, sticky=W)
+
+        Umur = tkinter.Label(self, text="Umur :")
+        Umur['bg'] = '#252525'
+        Umur['fg'] = '#ffffff'
+        Umur['font'] = 'Helvetica 12 bold'
+        Umur.grid(row=1, column=1, sticky=W)
+
+        spinbox = Spinbox(self,
+            from_=0,
+            to=100,
+            activebackground='blue',
+            bg='#252525',
+            cursor='plus',
+            font='Calibri',
+            fg='#ffffff')
+        spinbox.grid(row=1, column=2, sticky=W)
+
+
+        Alamat = tkinter.Label(self, text="Alamat :")
+        Alamat['bg'] = '#252525'
+        Alamat['fg'] = '#ffffff'
+        Alamat['font'] = 'Helvetica 12 bold'
+        Alamat.grid(row=2, column=1, sticky=W)
+
+        text = Text(self,
+            bg='#fff',
+            bd=5,
+            cursor='plus',
+            font='Calibri',
+            fg='#252525',
+            height=5,
+            width=20)
+        text.grid(row=2, column=2, sticky=W)
 
 
 def main():
